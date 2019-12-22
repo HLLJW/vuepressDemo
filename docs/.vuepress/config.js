@@ -1,16 +1,22 @@
 /*
  * @Author: your name
  * @Date: 2019-12-16 17:07:43
- * @LastEditTime: 2019-12-20 18:07:04
+ * @LastEditTime: 2019-12-22 19:20:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /Mynotes/vuepress-blog-demo/docs/.vuepress/config.js
+ * @FilePath: /Mynotes/vuepressDemo/docs/.vuepress/config.js
  */
+const sideNav = require('./utils/nav.js')
+console.log(sideNav);
+
+
 module.exports = {
+  // 部署站点的基础路径
+  base: '/vuepressDemo/',
   // 页面标题
-  title: 'Person Blog',
+  title: 'Blog',
   // 网页描述
-  description: '废柴阿蔚的个人站点',
+  description: '废柴阿蔚',
   head: [
     // 页面icon
     ['link', {
@@ -32,7 +38,7 @@ module.exports = {
     // 所有页面自动生成侧边栏
     sidebar: 'auto',
     // 仓库地址
-    repo: 'https://github.com/wangtunan/vuepress-blog-demo',
+    repo: 'https://github.com/HLLJW/vuepressDemo',
     // 仓库链接label
     repoLabel: 'Github',
     // 编辑链接
@@ -41,8 +47,8 @@ module.exports = {
     editLinkText: '编辑此页',
     // 导航
     nav: [{
-        text: '前端面试之道',
-        link: '/interview/'
+        text: 'Vue.js',
+        link: '/vue/'
       },
       {
         text: 'JavaScript书籍',
@@ -52,21 +58,13 @@ module.exports = {
           },
           {
             text: '你不知道的JavaScript(中)',
-            link: '/books/你不知道的javascript中'
+            link: '/books/你不知道的javascript中',
           },
           {
             text: '你不知道的JavaScript(下)',
             link: '/books/你不知道的javascript下'
           }
         ]
-      },
-      {
-        text: '数据结构和算法',
-        link: '/algorithm/'
-      },
-      {
-        text: 'Vue.js',
-        link: '/vue/'
       },
       {
         text: 'Webpack',
@@ -83,8 +81,8 @@ module.exports = {
     ],
     // 侧边栏
     sidebar: {
-
-      '/interview/': genSidebarConfig('前端面试之道')
+      '/vue/': [sideNav.vueSidebar],
+      '/webpack/': [sideNav.webpackSidebar]
     },
   },
 
@@ -98,18 +96,3 @@ module.exports = {
     }
   }
 }
-
-function genSidebarConfig(title) {
-  return [{
-    title,
-    collapsable: false,
-    children: [
-      '',
-      'test1',
-      'test2',
-    ]
-  }]
-}
-
-let a = genSidebarConfig('前端面试之道')
-console.log(a);
